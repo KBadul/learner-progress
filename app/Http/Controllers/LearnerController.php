@@ -10,6 +10,7 @@ class LearnerController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $sortOrder = $request->input('sort', 'desc');
         
         $learners = Learner::query()
             ->with('courses')
@@ -26,6 +27,14 @@ class LearnerController extends Controller
                 return $learner;
             });
 
-        return view('learner-progress', ['learners' => $learners]);
+        // Sort by average progress based on sortOrder
+        $learners = $sortOrder === 'asc' 
+            ? $learners->sortBy('average_progress')->values()
+            : $learners->sortByDesc('average_progress')->values();
+
+        return view('learner-progress', [
+            'learners' => $learners,
+            'sortOrder' => $sortOrder,
+        ]);
     }
 }

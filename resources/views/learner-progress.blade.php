@@ -31,8 +31,28 @@
             </form>
         </div>
 
-        <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            Showing <span class="font-semibold">{{ count($learners) }}</span> {{ count($learners) === 1 ? 'learner' : 'learners' }}
+        <div class="flex justify-between items-center">
+            <div class="mb-6 flex flex-col justify-start gap-2 items-start">
+                <span class="text-sm text-gray-500 dark:text-gray-300">Sort by Avg. Progress</span>
+                <div>
+                    <a 
+                        href="{{ url()->current() }}?{{ http_build_query(array_merge(request()->except('sort'), ['sort' => 'desc'])) }}" 
+                        class="px-4 py-2 {{ request('sort', 'desc') === 'desc' ? 'bg-purple-600 dark:bg-purple-700 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300' }} font-medium rounded-l-lg hover:opacity-90 transition-opacity"
+                    >
+                        ↓ High to Low
+                    </a>
+                    <a 
+                        href="{{ url()->current() }}?{{ http_build_query(array_merge(request()->except('sort'), ['sort' => 'asc'])) }}" 
+                        class="px-4 py-2 {{ request('sort') === 'asc' ? 'bg-purple-600 dark:bg-purple-700 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300' }} font-medium rounded-r-lg hover:opacity-90 transition-opacity"
+                    >
+                        ↑ Low to High
+                    </a>
+                </div>
+            </div>
+
+            <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                Showing <span class="font-semibold">{{ count($learners) }}</span> {{ count($learners) === 1 ? 'learner' : 'learners' }}
+            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
