@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Learner;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class LearnerController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $search = $request->input('search');
         $sortOrder = $request->input('sort', 'desc');
@@ -27,7 +28,6 @@ class LearnerController extends Controller
                 return $learner;
             });
 
-        // Sort by average progress based on sortOrder
         $learners = $sortOrder === 'asc' 
             ? $learners->sortBy('average_progress')->values()
             : $learners->sortByDesc('average_progress')->values();
