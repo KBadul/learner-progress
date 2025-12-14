@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Course;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CoursesTableSeeder extends Seeder
@@ -42,7 +41,7 @@ class CoursesTableSeeder extends Seeder
             'Tourism',
             'Tshivenda',
             'Visual Arts',
-            'Xitsonga'
+            'Xitsonga',
         ];
 
         foreach ($courses as $course) {

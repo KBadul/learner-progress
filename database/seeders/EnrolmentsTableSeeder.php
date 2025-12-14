@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Enrolment;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +15,7 @@ class EnrolmentsTableSeeder extends Seeder
     {
         // Get all learners and courses to map names to IDs
         $learners = DB::table('learners')->get()->mapWithKeys(function ($learner) {
-            return [$learner->firstname . ' ' . $learner->lastname => $learner->id];
+            return [$learner->firstname.' '.$learner->lastname => $learner->id];
         })->toArray();
 
         $courses = DB::table('courses')->get()->mapWithKeys(function ($course) {

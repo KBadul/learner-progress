@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class GetFilteredLearnersAction
 {
-    /** 
+    /**
      * @return Collection<Learner> $learners
      */
     public function run(?string $search, string $sortOrder = 'desc'): Collection
@@ -17,7 +17,7 @@ class GetFilteredLearnersAction
             ->searchCourses($search)
             ->get();
 
-        $learners = $sortOrder === 'asc' 
+        $learners = $sortOrder === 'asc'
             ? $learners->sortBy('average_progress')->values()
             : $learners->sortByDesc('average_progress')->values();
 
