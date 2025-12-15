@@ -26,7 +26,7 @@ cp .env.example .env
 4. Configure your database in the `.env` file (use `sqlite`, `mysql`, or `pgsql` for `DB_CONNECTION`)
 
 5. Generate the application key:
-```bash
+```b1ash
 php artisan key:generate
 ```
 
