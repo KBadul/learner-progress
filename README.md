@@ -47,4 +47,4 @@ npm run dev
 php artisan serve
 ```
 
-9. Access the application at `http://localhost:8000`
+9. Access the application at `http://localhost:8000/learner-progress`
